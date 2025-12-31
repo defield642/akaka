@@ -9,13 +9,12 @@ import bg1 from './background/pexels-enginakyurt-1435752.jpg';
 import bg2 from './background/pexels-francesco-ungaro-673648.jpg';
 import bg3 from './background/pexels-pixabay-268533.jpg';
 import bg4 from './background/pexels-pixabay-356056.jpg';
-import bg5 from './background/pexels-pixabay-414860.jpg';
 import bg6 from './background/pexels-pixabay-531880.jpg';
 import bg7 from './background/pexels-veeterzy-303383.jpg';
 import { div } from "framer-motion/client";
 import person1 from './person/pexels-anastasia-shuraeva-7278884.jpg';
 
-const backgrounds = [bg1, bg2, bg3, bg4, bg5, bg6, bg7];
+const backgrounds = [bg1, bg2, bg3, bg4, bg6, bg7];
 
 export default function AkakaWebsite() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +27,7 @@ export default function AkakaWebsite() {
     "Hello Akaka, I’m interested in your academic and technical writing services and would love to discuss how you can support my project successfully."
   );
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-  const emailAddress = "Can reach as via... akakawriters@gmail.com";
+  const emailAddress = "akakawriters@gmail.com";
 
   const navItems = [
     { id: "home", label: "HOME" },
@@ -190,8 +189,8 @@ export default function AkakaWebsite() {
               Elite <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Writer</span>
               <br />
             </h1>
-            <p className="mb-10 text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto leading-relaxed drop-shadow-lg" style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}>
-              Transforming ideas into impactful words which are <span className="text-blue-400 font-semibold">Essay</span>, <span className="text-blue-400 font-semibold">Article Puplishing </span>, and <span className="text-blue-400 font-semibold">Canvas</span> and solving technical problem which are <span className="text-blue-400 font-semibold">mathematics</span>, <span className="text-blue-400 font-semibold">Tax</span>
+            <p className="mb-10 text-xl md:text-2xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg font-semibold" style={{ textShadow: '0 3px 10px rgba(0,0,0,0.9)' }}>
+              Transforming ideas into impactful words through <span className="text-cyan-300 font-bold text-2xl">essays</span>, <span className="text-blue-300 font-bold text-2xl">research papers</span>, <span className="text-sky-300 font-bold text-2xl">article publishing</span>, <span className="text-cyan-400 font-bold text-2xl">theses</span>, <span className="text-blue-400 font-bold text-2xl">dissertations</span>, <span className="text-purple-300 font-bold text-2xl">PowerPoint</span> and <span className="text-purple-400 font-bold text-2xl">Canvas</span> support, while solving technical problems in <span className="text-emerald-300 font-bold text-2xl">mathematics</span>, <span className="text-green-400 font-bold text-2xl">taxation</span>, <span className="text-teal-300 font-bold text-2xl">accounting</span>, <span className="text-emerald-400 font-bold text-2xl">data analysis</span>, and providing <span className="text-pink-300 font-bold text-2xl">professional class management services</span>.
             </p>
           </motion.div>
 
