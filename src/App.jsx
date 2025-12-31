@@ -186,7 +186,7 @@ export default function AkakaWebsite() {
             className="mb-12"
           >
             <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight drop-shadow-2xl" style={{ textShadow: '0 4px 12px rgba(0,0,0,0.8)' }}>
-              Elite <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Writer</span>
+              Elite <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Writers</span>
               <br />
             </h1>
             <p className="mb-10 text-xl md:text-2xl text-white max-w-4xl mx-auto leading-relaxed drop-shadow-lg font-semibold" style={{ textShadow: '0 3px 10px rgba(0,0,0,0.9)' }}>
