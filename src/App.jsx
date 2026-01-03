@@ -1,9 +1,8 @@
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaWhatsapp, FaEnvelope, FaPhoneAlt, FaChevronDown, FaShieldAlt, FaAward, FaCertificate, FaUsers,FaBook, FaPenFancy, FaChalkboardTeacher } from "react-icons/fa";
 import akakaLogo from "./assets/Akaka.jpeg";
-import { useMemo } from "react";
 // Import images
 import bg1 from './background/pexels-enginakyurt-1435752.jpg';
 import bg2 from './background/pexels-francesco-ungaro-673648.jpg';
@@ -11,7 +10,7 @@ import bg3 from './background/pexels-pixabay-268533.jpg';
 import bg4 from './background/pexels-pixabay-356056.jpg';
 import bg6 from './background/pexels-pixabay-531880.jpg';
 import bg7 from './background/pexels-veeterzy-303383.jpg';
-import { div } from "framer-motion/client";
+// removed unused import from framer-motion client
 import person1 from './person/pexels-anastasia-shuraeva-7278884.jpg';
 
 const backgrounds = [bg1, bg2, bg3, bg4, bg6, bg7];
@@ -22,13 +21,26 @@ export default function AkakaWebsite() {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const phoneNumber = "+1 843 965 2683";
-  const whatsappNumber = "+1 843 965 2683";
+  const whatsappNumberRaw = "+1 843 965 2683";
+  const whatsappDigits = whatsappNumberRaw.replace(/\D/g, "");
   const whatsappMessage = encodeURIComponent(
     "Hello Akaka, I’m interested in your academic and technical writing services and would love to discuss how you can support my project successfully."
   );
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+  const whatsappWebLink = `https://wa.me/${whatsappDigits}?text=${whatsappMessage}`;
+  const whatsappAppCall = `whatsapp://call?number=${whatsappDigits}`;
   const emailAddress = "akakawriters@gmail.com";
-  const whatsappcall = `https://wa.me/${whatsappnumber}`;
+
+  const handleWhatsappCall = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    try {
+      // try to open WhatsApp native app first
+      window.location.href = whatsappAppCall;
+      // fallback to web chat after short delay
+      setTimeout(() => window.open(whatsappWebLink, "_blank"), 700);
+    } catch (err) {
+      window.open(whatsappWebLink, "_blank");
+    }
+  };
 
   const navItems = [
     { id: "home", label: "HOME" },
@@ -231,19 +243,20 @@ export default function AkakaWebsite() {
             >
               <FaEnvelope className="text-xl group-hover:scale-110 transition-transform" /> Email Us
             </a>
-            <a 
-              href={whatsappLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href={whatsappWebLink}
+              onClick={handleWhatsappCall}
               className="group px-8 py-4 rounded-2xl bg-gradient-to-r from-green-600 to-green-700 text-white flex items-center justify-center gap-3 hover:from-green-700 hover:to-green-800 transition-all duration-300 font-semibold text-lg shadow-2xl hover:shadow-green-500/25 transform hover:-translate-y-1"
             >
-              <FaWhatsapp className="text-xl group-hover:scale-110 transition-transform" /> Chat on WhatsApp
+              <FaWhatsapp className="text-xl group-hover:scale-110 transition-transform" /> Call on WhatsApp
             </a>
-            <a 
-              href={`tel:${whatsappcall}`} 
+            <a
+              href={whatsappWebLink}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group px-8 py-4 rounded-2xl border-2 border-white/20 text-white flex items-center justify-center gap-3 hover:border-blue-400 hover:bg-blue-600/10 transition-all duration-300 font-semibold text-lg backdrop-blur-sm transform hover:-translate-y-1"
             >
-              <FaPhoneAlt className="text-xl group-hover:scale-110 transition-transform" /> Call Now
+              <FaWhatsapp className="text-xl group-hover:scale-110 transition-transform" /> Text on WhatsApp
             </a>
           </motion.div>
 
@@ -697,9 +710,8 @@ export default function AkakaWebsite() {
             </motion.a>
             
             <motion.a 
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={whatsappWebLink}
+              onClick={handleWhatsappCall}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -712,17 +724,18 @@ export default function AkakaWebsite() {
                   <FaWhatsapp className="text-2xl text-white" />
                 </div>
                 <h4 className="text-2xl font-black text-white mb-4 group-hover:text-green-100 transition-colors">
-                Whatsapp
+                Call on WhatsApp
                 </h4>
                 <div className="text-green-200 text-sm font-mono bg-green-800/30 px-4 py-2 rounded-lg">
-                  +{whatsappNumber}
+                  {whatsappNumberRaw}
                 </div>
               </div>
             </motion.a>
             
             <motion.a 
-              href={`tel:${whatsappcall}`}
-              onClick={() => alert('Calling Akaka')}
+              href={whatsappWebLink}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -732,10 +745,10 @@ export default function AkakaWebsite() {
               <div className="absolute inset-0 bg-gradient-to-br from-gray-400/10 to-slate-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-gray-500 to-gray-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg">
-                  <FaPhoneAlt className="text-2xl text-white" />
+                  <FaWhatsapp className="text-2xl text-white" />
                 </div>
                 <h4 className="text-2xl font-black text-white mb-4 group-hover:text-gray-100 transition-colors">
-                Click Here
+                Text on WhatsApp
                 </h4>
                 <div className="text-gray-200 text-sm font-mono bg-gray-800/30 px-4 py-2 rounded-lg">
                   {phoneNumber}
@@ -914,9 +927,8 @@ export default function AkakaWebsite() {
             
             <div className="flex space-x-4">
               <a 
-                href={whatsappLink} 
-                target="_blank" 
-                rel="noopener noreferrer"
+                href={whatsappWebLink} 
+                onClick={handleWhatsappCall}
                 className="text-gray-400 hover:text-green-400 transition-colors text-sm"
                 aria-label="WhatsApp"
               >
@@ -929,12 +941,14 @@ export default function AkakaWebsite() {
               >
                 <FaEnvelope className="text-base" />
               </a>
-              <a 
-                href={`tel:${whatsappcall}`} 
-                className="text-gray-400 hover:text-blue-400 transition-colors text-sm"
-                aria-label="Phone"
+              <a
+                href={whatsappWebLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-green-400 transition-colors text-sm"
+                aria-label="WhatsApp Text"
               >
-                <FaPhoneAlt className="text-base" />
+                <FaWhatsapp className="text-base" />
               </a>
             </div>
           </div>
