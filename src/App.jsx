@@ -21,13 +21,14 @@ export default function AkakaWebsite() {
   const [activeFaq, setActiveFaq] = useState(null);
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  const phoneNumber = "+1(432)323-9533";
-  const whatsappNumber = "+1(432)323-9533";
+  const phoneNumber = "+1 843 965 2683";
+  const whatsappNumber = "+1 843 965 2683";
   const whatsappMessage = encodeURIComponent(
     "Hello Akaka, I’m interested in your academic and technical writing services and would love to discuss how you can support my project successfully."
   );
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   const emailAddress = "akakawriters@gmail.com";
+  const whatsappcall = `https://wa.me/${whatsappnumber}`;
 
   const navItems = [
     { id: "home", label: "HOME" },
@@ -239,7 +240,7 @@ export default function AkakaWebsite() {
               <FaWhatsapp className="text-xl group-hover:scale-110 transition-transform" /> Chat on WhatsApp
             </a>
             <a 
-              href={`tel:${phoneNumber}`} 
+              href={`tel:${whatsappcall}`} 
               className="group px-8 py-4 rounded-2xl border-2 border-white/20 text-white flex items-center justify-center gap-3 hover:border-blue-400 hover:bg-blue-600/10 transition-all duration-300 font-semibold text-lg backdrop-blur-sm transform hover:-translate-y-1"
             >
               <FaPhoneAlt className="text-xl group-hover:scale-110 transition-transform" /> Call Now
@@ -720,7 +721,7 @@ export default function AkakaWebsite() {
             </motion.a>
             
             <motion.a 
-              href={`tel:${phoneNumber}`}
+              href={`tel:${whatsappcall}`}
               onClick={() => alert('Calling Akaka')}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -929,7 +930,7 @@ export default function AkakaWebsite() {
                 <FaEnvelope className="text-base" />
               </a>
               <a 
-                href={`tel:${phoneNumber}`} 
+                href={`tel:${whatsappcall}`} 
                 className="text-gray-400 hover:text-blue-400 transition-colors text-sm"
                 aria-label="Phone"
               >
